@@ -10,12 +10,15 @@ export function Navbar() {
           Your Name
         </Link>
 
-        <div className="flex items-center gap-8">
-          <a href="#projects" className="text-sm text-foreground hover:text-primary transition-colors">
-            Projects
-          </a>
-          <a href="#contact" className="text-sm text-foreground hover:text-primary transition-colors">
+        <div className="flex items-center gap-6">
+          <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Contact
+          </a>
+          <a
+            href="#contact"
+            className="px-4 py-1.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+          >
+            Hire me
           </a>
         </div>
       </div>
