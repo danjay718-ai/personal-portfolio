@@ -1,8 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -11,11 +15,27 @@ export function Navbar() {
         </Link>
 
         <div className="flex items-center gap-6">
-          <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Contact
-          </a>
+          <Link
+            href="/projects"
+            className={`text-sm transition-colors ${
+              pathname === '/projects'
+                ? 'text-primary font-medium'
+                : 'text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            Projects
+          </Link>
+          {isHome ? (
+            <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Contact
+            </a>
+          ) : (
+            <Link href="/#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Contact
+            </Link>
+          )}
           <a
-            href="#contact"
+            href={isHome ? '#contact' : '/#contact'}
             className="px-4 py-1.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             Hire me
