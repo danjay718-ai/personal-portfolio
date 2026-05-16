@@ -198,8 +198,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Contact / Get in Touch — full width */}
-            <div id="contact" className="bento-card md:col-span-3 bg-card border border-border rounded-2xl p-8 hover:border-primary/40 hover:shadow-md transition-all duration-300">
+            {/* Contact / Get in Touch — half width */}
+            <div id="contact" className="bento-card md:col-span-2 bg-card border border-border rounded-2xl p-6 hover:border-primary/40 hover:shadow-md transition-all duration-300">
               <h3 className="font-semibold text-foreground mb-5 flex items-center gap-2">
                 <span className="w-2 h-2 bg-primary rounded-full" />
                 Get in Touch
@@ -217,41 +217,37 @@ export default function Home() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                  <input
-                    type="text"
-                    id="contact-name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    onFocus={() => setFocused('name')}
-                    onBlur={() => setFocused(null)}
-                    required
-                    className={`px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 ${
-                      focused === 'name' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
-                    }`}
-                    placeholder="Your name"
-                  />
-                  <input
-                    type="email"
-                    id="contact-email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    onFocus={() => setFocused('email')}
-                    onBlur={() => setFocused(null)}
-                    required
-                    className={`px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 ${
-                      focused === 'email' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
-                    }`}
-                    placeholder="your@email.com"
-                  />
-                  <button
-                    type="submit"
-                    className="px-4 py-2.5 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all text-sm"
-                  >
-                    Send Message →
-                  </button>
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <div className="grid grid-cols-2 gap-3">
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      onFocus={() => setFocused('name')}
+                      onBlur={() => setFocused(null)}
+                      required
+                      className={`px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 ${
+                        focused === 'name' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
+                      }`}
+                      placeholder="Your name"
+                    />
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      onFocus={() => setFocused('email')}
+                      onBlur={() => setFocused(null)}
+                      required
+                      className={`px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 ${
+                        focused === 'email' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
+                      }`}
+                      placeholder="your@email.com"
+                    />
+                  </div>
                   <textarea
                     id="contact-message"
                     name="message"
@@ -261,11 +257,17 @@ export default function Home() {
                     onBlur={() => setFocused(null)}
                     required
                     rows={2}
-                    className={`md:col-span-3 px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 resize-none ${
+                    className={`w-full px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 resize-none ${
                       focused === 'message' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
                     }`}
                     placeholder="What would you like to talk about?"
                   />
+                  <button
+                    type="submit"
+                    className="w-full px-4 py-2.5 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all text-sm"
+                  >
+                    Send Message →
+                  </button>
                 </form>
               )}
             </div>
