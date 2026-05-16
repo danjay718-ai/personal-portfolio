@@ -177,7 +177,7 @@ export default function Home() {
                 <span className="w-2 h-2 bg-primary rounded-full" />
                 Connect
               </h3>
-              <div className="flex flex-col justify-between flex-1">
+              <div className="space-y-1">
                 {[
                   { label: 'GitHub', href: '#', icon: '⌥' },
                   { label: 'LinkedIn', href: '#', icon: '◈' },
@@ -186,7 +186,7 @@ export default function Home() {
                   <a
                     key={label}
                     href={href}
-                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 group/link"
+                    className="flex items-center justify-between px-3 py-2 rounded-xl text-xs text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 group/link"
                   >
                     <span className="flex items-center gap-2">
                       <span className="text-primary/50 group-hover/link:text-primary transition-colors">{icon}</span>
