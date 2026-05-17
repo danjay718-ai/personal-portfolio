@@ -10,6 +10,8 @@ export default function Home() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [focused, setFocused] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [result, setResult] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const skills = ['PHP', 'Laravel', 'MySQL', 'JavaScript', 'Tailwind CSS', 'REST API', 'JWT', 'OAuth 2.0', 'Git', 'Docker', 'Linux', 'React'];
 
@@ -34,11 +36,41 @@ export default function Home() {
     { period: 'March 2023 - June 2023', role: 'Frontend Developer Intern', company: 'La Verdad Christian College Inc.' },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setSubmitted(false), 4000);
+    setIsSubmitting(true);
+    setResult('');
+
+    const submitData = new FormData(e.currentTarget);
+    submitData.append('access_key', '9255d606-d65e-45c3-bd9d-494765788e07');
+
+    const object = Object.fromEntries(submitData);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(object),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        e.currentTarget.reset();
+        setTimeout(() => setSubmitted(false), 4000);
+      } else {
+        setResult(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setResult('Error submitting the form.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -245,7 +277,6 @@ export default function Home() {
                   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dannver-jay-lagramada', icon: '◈' },
                   { label: 'Twitter / X', href: 'https://x.com/deymv3rs', icon: '✦' },
                   { label: 'Email', href: 'mailto:dannverjay.lagramada718@gmail.com', icon: '✉' },
-                  // { label: '+63 976 637 9761', href: 'tel:+639766379761', icon: '✆' },
                 ].map(({ label, href, icon }) => (
                   <a
                     key={label}
@@ -261,6 +292,13 @@ export default function Home() {
                     <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
                   </a>
                 ))}
+                <div className="flex items-center justify-between px-3 py-2 rounded-xl text-xs text-muted-foreground">
+                  <span className="flex items-center gap-2">
+                    <span className="text-primary/50">☎</span>
+                    Phone
+                  </span>
+                  <span>+63 976 637 9761</span>
+                </div>
               </div>
             </div>
 
@@ -327,10 +365,22 @@ export default function Home() {
                   />
                   <button
                     type="submit"
-                    className="w-full px-4 py-2.5 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all text-sm"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-2.5 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all text-sm disabled:opacity-70 disabled:hover:translate-y-0"
                   >
-                    Send Message →
+                    {isSubmitting ? "Sending..." : "Send Message →"}
                   </button>
+                  {result && (
+                    <p
+                      className={`text-xs font-medium ${
+                        result.toLowerCase().includes('error') || result.toLowerCase().includes('wrong')
+                          ? 'text-red-500'
+                          : 'text-primary'
+                      }`}
+                    >
+                      {result}
+                    </p>
+                  )}
                 </form>
               )}
             </div>
@@ -343,4 +393,6 @@ export default function Home() {
     </main>
   );
 }
+
+
 
