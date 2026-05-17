@@ -1,36 +1,99 @@
 'use client';
 
+export interface ProjectItem {
+  id: number;
+  title: string;
+  description: string;
+  tags: string[];
+  link?: string;
+  status?: 'In Progress' | 'Live' | 'Planned' | 'Side Project' | 'Coming Soon' | 'UAT';
+  note?: string;
+}
+
 export function Projects() {
-  const projects = [
+  const projects: ProjectItem[] = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'Full-stack marketplace with payment processing and real-time inventory management.',
-      tags: ['Next.js', 'PostgreSQL', 'Stripe'],
-      link: '#',
+      title: 'Finance & Enrollment Automation',
+      description: 'Engineered automated generation of scholarship fee breakdowns and double-entry journal records for 2,000+ students per enrollment cycle — eliminating all manual ledger entry for the finance department.',
+      tags: ['Laravel', 'MySQL', 'PHP', 'Automation'],
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'Collaborative tool for teams to organize and track their work in real-time.',
-      tags: ['React', 'Firebase', 'WebSockets'],
-      link: '#',
+      title: 'SSO & API Gateway Module',
+      description: 'Architecting a centralized identity layer using JWT, OAuth 2.0, Google One Tap, and API key management — serving authentication and inter-module API access for all institutional systems.',
+      tags: ['JWT', 'OAuth 2.0', 'Google SSO', 'Laravel'],
+      status: 'In Progress',
     },
     {
       id: 3,
-      title: 'Analytics Dashboard',
-      description: 'Interactive dashboard for visualizing business metrics and tracking performance.',
-      tags: ['React', 'D3.js', 'Node.js'],
-      link: '#',
+      title: 'Scholarship & Admission Module',
+      description: 'Role-based application and approval system handling 2,000+ applicants per admissions cycle, with automated email notifications (Gmail SMTP) and Google SSO integration.',
+      tags: ['Laravel', 'Spatie', 'Google SSO', 'Gmail SMTP'],
     },
     {
       id: 4,
-      title: 'Design System',
-      description: 'Comprehensive component library with documentation and Storybook integration.',
-      tags: ['React', 'TypeScript', 'Storybook'],
-      link: '#',
+      title: 'LVCC Public Website',
+      description: 'Built the official public-facing website of La Verdad Christian College from scratch per management specifications.',
+      link: 'https://web.uat.laverdad.edu.ph/',
+      note: 'Some changes are still under QA and not yet reflected on the UAT link.',
+      tags: ['HTML', 'CSS'],
+      status: 'UAT',
+    },
+    {
+      id: 5,
+      title: 'Capstone Projects Library',
+      description: 'Centralized landing page linking all student capstone projects at La Verdad, with search, filtering, and per-project descriptions — designed to serve as a permanent institutional dev portfolio.',
+      tags: ['Laravel', 'HTML', 'CSS'],
+      status: 'Planned',
+      note: 'Currently assigned task',
+    },
+    {
+      id: 6,
+      title: 'Personnel Document Management System (Capstone)',
+      description: 'Laravel-based document system for a Philippine National Police unit with role-based access control (Spatie), authentication, and SMS notifications via Semaphore API.',
+      tags: ['Laravel', 'Spatie', 'Semaphore API', 'PHP'],
+    },
+    {
+      id: 7,
+      title: 'Project Management App',
+      description: 'A side project — basic project management application with role-based access control (RBAC) built with Laravel and Livewire.',
+      tags: ['Laravel', 'Livewire', 'RBAC', 'PHP'],
+      status: 'Side Project',
+    },
+    {
+      id: 8,
+      title: 'Kori Systems Website',
+      description: 'Company website for Kori Systems, a startup. Built with React.',
+      link: 'https://korisystems.com/',
+      tags: ['React', 'JavaScript'],
+      status: 'Live',
+    },
+    {
+      id: 9,
+      title: 'Blog App',
+      description: 'A personal blog application currently in the planning stage.',
+      tags: ['Laravel (planned)'],
+      status: 'Coming Soon',
     },
   ];
+
+  const getStatusStyle = (status: ProjectItem['status']) => {
+    switch (status) {
+      case 'In Progress':
+        return 'bg-amber-500/10 text-amber-500 border border-amber-500/25';
+      case 'Live':
+      case 'UAT':
+        return 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/25';
+      case 'Planned':
+      case 'Coming Soon':
+        return 'bg-blue-500/10 text-blue-500 border border-blue-500/25';
+      case 'Side Project':
+        return 'bg-purple-500/10 text-purple-500 border border-purple-500/25';
+      default:
+        return 'bg-primary/10 text-primary border border-primary/15';
+    }
+  };
 
   return (
     <section id="projects" className="border-b border-border py-16 px-6">
@@ -38,30 +101,52 @@ export function Projects() {
         <h2 className="text-2xl font-bold text-foreground mb-8">Projects</h2>
 
         <div className="space-y-8">
-          {projects.map((project) => (
-            <a
-              key={project.id}
-              href={project.link}
-              className="group block p-5 border border-border rounded hover:border-primary/50 hover:bg-muted/20 transition-all duration-200"
-            >
-              <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
-                {project.title}
-              </h3>
-              <p className="text-foreground text-sm mb-4 leading-relaxed">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </a>
-          ))}
+          {projects.map((project) => {
+            const CardWrapper = project.link ? 'a' : 'div';
+            const extraProps = project.link
+              ? {
+                  href: project.link,
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                  className: 'group block p-6 border border-border rounded-2xl hover:border-primary/50 hover:bg-muted/10 transition-all duration-300 hover:shadow-sm cursor-pointer',
+                }
+              : {
+                  className: 'group block p-6 border border-border rounded-2xl hover:border-primary/20 hover:bg-muted/5 transition-all duration-300',
+                };
+
+            return (
+              <CardWrapper key={project.id} {...extraProps}>
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors text-base">
+                    {project.title}
+                  </h3>
+                  {project.status && (
+                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider ${getStatusStyle(project.status)}`}>
+                      {project.status}
+                    </span>
+                  )}
+                </div>
+                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                {project.note && (
+                  <p className="text-xs text-amber-500/90 font-medium mb-4 italic">
+                    Note: {project.note}
+                  </p>
+                )}
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 text-xs bg-primary/5 text-primary rounded-xl border border-primary/10"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </CardWrapper>
+            );
+          })}
         </div>
       </div>
     </section>

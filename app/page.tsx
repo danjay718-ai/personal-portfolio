@@ -12,13 +12,24 @@ export default function Home() {
   const skills = ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'];
 
   const recentProjects = [
-    { title: 'E-Commerce Platform', description: 'Full-stack marketplace with payment processing', tags: ['Next.js', 'Stripe'] },
-    { title: 'Analytics Dashboard', description: 'Business metrics & data visualization', tags: ['React', 'D3.js'] },
+    {
+      title: 'SSO & API Gateway Module',
+      description: 'Centralized identity layer serving authentication and inter-module API access.',
+      tags: ['JWT', 'OAuth 2.0', 'Laravel'],
+      status: 'In Progress',
+    },
+    {
+      title: 'LVCC Public Website',
+      description: 'Official public-facing website of La Verdad Christian College built from scratch.',
+      tags: ['HTML', 'CSS'],
+      status: 'UAT',
+    },
   ];
 
   const experience = [
-    { period: '2022 – Present', role: 'Senior Developer', company: 'Company Name' },
-    { period: '2020 – 2022', role: 'Frontend Developer', company: 'Agency Inc.' },
+    { period: 'July 2023 – Present', role: 'Full Stack Web Developer', company: 'La Verdad Christian College Inc.' },
+    { period: 'November 2025 - December 2025', role: 'Freelance Project', company: 'Kori Walk In Cold Storage, Refrigeration & Aircon Services' },
+    { period: 'March 2023 - June 2023', role: 'Frontend Developer Intern', company: 'La Verdad Christian College Inc.' },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -58,8 +69,8 @@ export default function Home() {
                   Full-Stack<br />Developer
                 </h1>
                 <p className="text-sm opacity-85 leading-relaxed max-w-sm">
-                  I build elegant, scalable web experiences with React, Next.js, and Node.js.
-                  Passionate about clean code, great UX, and shipping fast.
+                  I build institutional-grade web systems using Laravel, MySQL, and REST APIs — from student finance automation 
+                  to centralized SSO gateways. Passionate about clean architecture and systems that actually work in production.
                 </p>
               </div>
 
@@ -72,7 +83,9 @@ export default function Home() {
                     Get in touch →
                   </a>
                   <a
-                    href="#"
+                    href="https://github.com/danjay718-ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-4 py-2 bg-white/15 text-primary-foreground rounded-xl text-xs font-semibold hover:bg-white/25 transition-all backdrop-blur-sm hover:-translate-y-0.5"
                   >
                     View GitHub
@@ -120,19 +133,23 @@ export default function Home() {
                   <a
                     key={i}
                     href="/projects"
-                    className="flex-1 flex flex-col justify-center p-3 rounded-xl bg-primary/5 hover:bg-primary/10 transition-colors duration-200 group/proj"
+                    className="flex-1 flex flex-col justify-center px-4 py-3.5 rounded-xl bg-primary/5 hover:bg-primary/10 transition-colors duration-200 group/proj border border-transparent hover:border-primary/10"
                   >
-                    <p className="text-sm font-semibold text-foreground group-hover/proj:text-primary transition-colors">
-                      {project.title}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{project.description}</p>
-                    <div className="flex gap-1.5 mt-1.5 flex-wrap">
-                      {project.tags.map(tag => (
-                        <span key={tag} className="px-2 py-0.5 bg-primary/10 text-primary rounded-md text-xs font-medium">
-                          {tag}
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-sm font-semibold text-foreground group-hover/proj:text-primary transition-colors truncate">
+                        {project.title}
+                      </p>
+                      {project.status && (
+                        <span className={`px-2 py-0.5 rounded-full text-[9px] font-semibold uppercase tracking-wider shrink-0 ${
+                          project.status === 'In Progress'
+                            ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
+                            : 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
+                        }`}>
+                          {project.status}
                         </span>
-                      ))}
+                      )}
                     </div>
+                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed line-clamp-1">{project.description}</p>
                   </a>
                 ))}
               </div>
@@ -165,8 +182,8 @@ export default function Home() {
               </h3>
               <div className="space-y-3 text-sm">
                 <div className="p-3 rounded-xl bg-primary/5 group-hover:bg-primary/10 transition-colors">
-                  <p className="font-semibold text-foreground">B.S. Computer Science</p>
-                  <p className="text-xs text-muted-foreground mt-1">University Name · 2019</p>
+                  <p className="font-semibold text-foreground">B.S. Information Systems</p>
+                  <p className="text-xs text-muted-foreground mt-1">La Verdad Christian College Inc. · July 2023</p>
                 </div>
               </div>
             </div>
@@ -179,13 +196,17 @@ export default function Home() {
               </h3>
               <div className="space-y-1">
                 {[
-                  { label: 'GitHub', href: '#', icon: '⌥' },
-                  { label: 'LinkedIn', href: '#', icon: '◈' },
-                  { label: 'Twitter / X', href: '#', icon: '✦' },
+                  { label: 'GitHub', href: 'https://github.com/danjay718-ai', icon: '⌥' },
+                  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dannver-jay-lagramada', icon: '◈' },
+                  { label: 'Twitter / X', href: 'https://x.com/deymv3rs', icon: '✦' },
+                  { label: 'Email', href: 'mailto:dannverjay.lagramada718@gmail.com', icon: '✉' },
+                  
                 ].map(({ label, href, icon }) => (
                   <a
                     key={label}
                     href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-between px-3 py-2 rounded-xl text-xs text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 group/link"
                   >
                     <span className="flex items-center gap-2">
@@ -228,9 +249,8 @@ export default function Home() {
                       onFocus={() => setFocused('name')}
                       onBlur={() => setFocused(null)}
                       required
-                      className={`px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 ${
-                        focused === 'name' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
-                      }`}
+                      className={`px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 ${focused === 'name' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
+                        }`}
                       placeholder="Your name"
                     />
                     <input
@@ -242,9 +262,8 @@ export default function Home() {
                       onFocus={() => setFocused('email')}
                       onBlur={() => setFocused(null)}
                       required
-                      className={`px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 ${
-                        focused === 'email' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
-                      }`}
+                      className={`px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 ${focused === 'email' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
+                        }`}
                       placeholder="your@email.com"
                     />
                   </div>
@@ -257,9 +276,8 @@ export default function Home() {
                     onBlur={() => setFocused(null)}
                     required
                     rows={2}
-                    className={`w-full px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 resize-none ${
-                      focused === 'message' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
-                    }`}
+                    className={`w-full px-4 py-2.5 bg-background border rounded-xl text-sm text-foreground placeholder-muted-foreground focus:outline-none transition-all duration-200 resize-none ${focused === 'message' ? 'border-primary ring-2 ring-primary/20' : 'border-border'
+                      }`}
                     placeholder="What would you like to talk about?"
                   />
                   <button

@@ -10,9 +10,9 @@ export function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex flex-col items-center md:items-start gap-1">
           <Link href="/" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
-            Your Name
+            Dannver Jay Lagramada
           </Link>
-          <p className="text-xs text-muted-foreground">© {currentYear} · Built with Next.js &amp; Tailwind CSS</p>
+          <p className="text-xs text-muted-foreground">© {currentYear}</p>
         </div>
 
         <div className="flex items-center gap-6">
@@ -22,10 +22,20 @@ export function Footer() {
           <a href="/#contact" className="text-xs text-muted-foreground hover:text-primary transition-colors">
             Contact
           </a>
-          <a href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+          <a
+            href="https://github.com/danjay718-ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
             GitHub
           </a>
-          <a href="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+          <a
+            href="https://www.linkedin.com/in/dannver-jay-lagramada"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
             LinkedIn
           </a>
         </div>
