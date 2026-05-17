@@ -82,8 +82,6 @@ export default function Home() {
                       </button>
                     )}
                   </p>
-                  { label: 'Phone', href: 'tel:+639766379761', icon: '+' },
-                  
                   {isExpanded && (
                     <>
                       <p className="animate-fadeIn">
@@ -247,7 +245,7 @@ export default function Home() {
                   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dannver-jay-lagramada', icon: '◈' },
                   { label: 'Twitter / X', href: 'https://x.com/deymv3rs', icon: '✦' },
                   { label: 'Email', href: 'mailto:dannverjay.lagramada718@gmail.com', icon: '✉' },
-                  
+                  // { label: '+63 976 637 9761', href: 'tel:+639766379761', icon: '✆' },
                 ].map(({ label, href, icon }) => (
                   <a
                     key={label}
