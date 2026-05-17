@@ -1,11 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 
 export function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === '/';
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -14,7 +17,8 @@ export function Navbar() {
           Dannver Jay Lagramada
         </Link>
 
-        <div className="flex items-center gap-6">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-6">
           <Link
             href="/projects"
             className={`text-sm transition-colors ${
@@ -24,6 +28,16 @@ export function Navbar() {
             }`}
           >
             Projects
+          </Link>
+          <Link
+            href="/blog"
+            className={`text-sm transition-colors ${
+              pathname === '/blog'
+                ? 'text-primary font-medium'
+                : 'text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            Read Blog
           </Link>
           {isHome ? (
             <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -35,13 +49,76 @@ export function Navbar() {
             </Link>
           )}
           <a
-            href={isHome ? '#contact' : '/#contact'}
+            href="https://calendly.com/dannverjay-lagramada718/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 py-1.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
-            Hire me
+            Let&apos;s Talk
           </a>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="flex md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 focus:outline-none transition-colors"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
+
+      {/* Mobile Navigation Panel */}
+      {isMenuOpen && (
+        <div className="md:hidden border-b border-border bg-background/95 backdrop-blur-md transition-all duration-200">
+          <div className="px-6 py-4 flex flex-col gap-4">
+            <Link
+              href="/projects"
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-sm font-medium py-1 transition-colors ${
+                pathname === '/projects' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              Projects
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-sm font-medium py-1 transition-colors ${
+                pathname === '/blog' ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              Read Blog
+            </Link>
+            {isHome ? (
+              <a
+                href="#contact"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-sm font-medium py-1 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Contact
+              </a>
+            ) : (
+              <Link
+                href="/#contact"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-sm font-medium py-1 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Contact
+              </Link>
+            )}
+            <a
+              href="https://calendly.com/dannverjay-lagramada718/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMenuOpen(false)}
+              className="mt-2 w-full px-4 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg text-center hover:bg-primary/90 hover:shadow-md transition-all duration-200"
+            >
+              Let&apos;s Talk
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

@@ -5,92 +5,9 @@ import { Footer } from '@/components/footer';
 import { useState } from 'react';
 import Link from 'next/link';
 
-interface ProjectItem {
-  id: number;
-  title: string;
-  description: string;
-  tags: string[];
-  year: string;
-  href?: string;
-  status?: 'In Progress' | 'Live' | 'Planned' | 'Side Project' | 'Coming Soon' | 'UAT';
-  note?: string;
-}
+import { projectsData, ProjectItem } from '@/components/projects';
 
-const allProjects: ProjectItem[] = [
-  {
-    id: 1,
-    title: 'Finance & Enrollment Automation',
-    description: 'Engineered automated generation of scholarship fee breakdowns and double-entry journal records for 2,000+ students per enrollment cycle — eliminating all manual ledger entry for the finance department.',
-    tags: ['Laravel', 'MySQL', 'PHP', 'Automation'],
-    year: '2024',
-  },
-  {
-    id: 2,
-    title: 'SSO & API Gateway Module',
-    description: 'Architecting a centralized identity layer using JWT, OAuth 2.0, Google One Tap, and API key management — serving authentication and inter-module API access for all institutional systems.',
-    tags: ['JWT', 'OAuth 2.0', 'Google SSO', 'Laravel'],
-    year: '2025',
-    status: 'In Progress',
-  },
-  {
-    id: 3,
-    title: 'Scholarship & Admission Module',
-    description: 'Role-based application and approval system handling 2,000+ applicants per admissions cycle, with automated email notifications (Gmail SMTP) and Google SSO integration.',
-    tags: ['Laravel', 'Spatie', 'Google SSO', 'Gmail SMTP'],
-    year: '2024',
-  },
-  {
-    id: 4,
-    title: 'LVCC Public Website',
-    description: 'Built the official public-facing website of La Verdad Christian College from scratch per management specifications.',
-    href: 'https://web.uat.laverdad.edu.ph/',
-    note: 'Some changes are still under QA and not yet reflected on the UAT link.',
-    tags: ['HTML', 'CSS'],
-    year: '2024',
-    status: 'UAT',
-  },
-  {
-    id: 5,
-    title: 'Capstone Projects Library',
-    description: 'Centralized landing page linking all student capstone projects at La Verdad, with search, filtering, and per-project descriptions — designed to serve as a permanent institutional dev portfolio.',
-    tags: ['Laravel', 'HTML', 'CSS'],
-    year: '2025',
-    status: 'Planned',
-    note: 'Currently assigned task',
-  },
-  {
-    id: 6,
-    title: 'Personnel Document Management System (Capstone)',
-    description: 'Laravel-based document system for a Philippine National Police unit with role-based access control (Spatie), authentication, and SMS notifications via Semaphore API.',
-    tags: ['Laravel', 'Spatie', 'Semaphore API', 'PHP'],
-    year: '2023',
-  },
-  {
-    id: 7,
-    title: 'Project Management App',
-    description: 'A side project — basic project management application with role-based access control (RBAC) built with Laravel and Livewire.',
-    tags: ['Laravel', 'Livewire', 'RBAC', 'PHP'],
-    year: '2025',
-    status: 'Side Project',
-  },
-  {
-    id: 8,
-    title: 'Kori Systems Website',
-    description: 'Company website for Kori Systems, a startup. Built with React.',
-    href: 'https://korisystems.com/',
-    tags: ['React', 'JavaScript'],
-    year: '2025',
-    status: 'Live',
-  },
-  {
-    id: 9,
-    title: 'Blog App',
-    description: 'A personal blog application currently in the planning stage.',
-    tags: ['Laravel (planned)'],
-    year: '2025',
-    status: 'Coming Soon',
-  },
-];
+const allProjects: ProjectItem[] = projectsData;
 
 // Curated primary tags for filtering to keep the filter UI clean and cohesive
 const filterTags = ['All', 'Laravel', 'React', 'Google SSO', 'Automation', 'PHP', 'HTML/CSS'];

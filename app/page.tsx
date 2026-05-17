@@ -3,13 +3,15 @@
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [focused, setFocused] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const skills = ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'];
+  const skills = ['PHP', 'Laravel', 'MySQL', 'JavaScript', 'Tailwind CSS', 'REST API', 'JWT', 'OAuth 2.0', 'Git', 'Docker', 'Linux', 'React'];
 
   const recentProjects = [
     {
@@ -52,10 +54,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
 
           {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto md:auto-rows-[280px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto md:auto-rows-[minmax(280px,_auto)]">
 
             {/* About Card - Large, spans 2 cols × 2 rows */}
-            <div className="bento-card md:col-span-2 md:row-span-2 bg-gradient-to-br from-primary via-primary/90 to-primary/70 rounded-3xl p-8 text-primary-foreground flex flex-col justify-between group overflow-hidden relative min-h-[380px] md:min-h-0">
+            <div className="bento-card md:col-span-2 md:row-span-2 bg-gradient-to-br from-primary via-primary/90 to-primary/70 rounded-3xl p-8 text-primary-foreground flex flex-col justify-between group overflow-hidden relative min-h-[220px] md:min-h-[576px] h-full">
               {/* Ambient glow orb */}
               <div className="orb absolute -top-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
               <div className="orb absolute -bottom-16 -left-8 w-40 h-40 bg-white/5 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700 delay-100" />
@@ -66,15 +68,44 @@ export default function Home() {
                   Open for opportunities
                 </div>
                 <h1 className="text-4xl font-bold mb-3 leading-tight">
-                  Full-Stack<br />Developer
+                  About
                 </h1>
-                <p className="text-sm opacity-85 leading-relaxed max-w-sm">
-                  I build institutional-grade web systems using Laravel, MySQL, and REST APIs — from student finance automation 
-                  to centralized SSO gateways. Passionate about clean architecture and systems that actually work in production.
-                </p>
+                <div className="space-y-3.5 text-xs md:text-sm opacity-90 leading-relaxed max-w-xl mt-4">
+                  <p>
+                    A Full Stack Web Developer with 2+ years of professional experience building enterprise web systems for a school covering basic to higher education.
+                    {!isExpanded && (
+                      <button
+                        onClick={() => setIsExpanded(true)}
+                        className="ml-1.5 font-semibold underline decoration-white/40 hover:decoration-white transition-all text-white inline-block focus:outline-none cursor-pointer"
+                      >
+                        Read more...
+                      </button>
+                    )}
+                  </p>
+                  
+                  {isExpanded && (
+                    <>
+                      <p className="animate-fadeIn">
+                        I've worked end-to-end on real production systems — student enrollment, scholarship management, finance automation processing 2,000+ transactions per cycle, and currently architecting a centralized SSO and API Gateway. I take full ownership of everything I build, from development and testing to deployment and production support.
+                      </p>
+                      <p className="animate-fadeIn">
+                        I love learning and I'm always open to exploring new technologies, roles, and challenges. I'm enthusiastically working to master advanced Laravel, and actively exploring cloud, system design, and AI — areas I'm genuinely excited to grow into.
+                      </p>
+                      <p className="animate-fadeIn">
+                        Currently open to full stack, backend, or web developer opportunities where I can contribute, grow, and build things that matter.
+                        <button
+                          onClick={() => setIsExpanded(false)}
+                          className="ml-1.5 font-semibold underline decoration-white/40 hover:decoration-white transition-all text-white inline-block focus:outline-none cursor-pointer"
+                        >
+                          Read less
+                        </button>
+                      </p>
+                    </>
+                  )}
+                </div>
               </div>
 
-              <div className="relative z-10 flex items-end justify-between mt-6 md:mt-0">
+              <div className="relative z-10 flex items-end justify-between mt-8">
                 <div className="flex flex-wrap gap-3">
                   <a
                     href="#contact"
@@ -157,10 +188,18 @@ export default function Home() {
 
             {/* Skills Card */}
             <div className="bento-card bg-card border border-border rounded-2xl p-6 hover:border-primary/40 hover:shadow-md transition-all duration-300 group">
-              <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2 text-sm">
-                <span className="w-2 h-2 bg-primary rounded-full" />
-                Tech Stack
-              </h3>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2 text-sm">
+                  <span className="w-2 h-2 bg-primary rounded-full" />
+                  Tech Stack
+                </h3>
+                <Link
+                  href="/skills"
+                  className="text-xs text-primary hover:underline underline-offset-2 transition-all"
+                >
+                  View all →
+                </Link>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill, i) => (
                   <span

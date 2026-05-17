@@ -2,14 +2,18 @@
 
 export function About() {
   const skills = [
-    'React',
-    'Next.js',
-    'TypeScript',
-    'Node.js',
-    'PostgreSQL',
+    'PHP',
+    'Laravel',
+    'MySQL',
+    'JavaScript',
     'Tailwind CSS',
-    'AWS',
-    'REST APIs',
+    'REST API',
+    'JWT',
+    'OAuth 2.0',
+    'Git',
+    'Docker',
+    'Linux',
+    'React',
   ];
 
   return (
