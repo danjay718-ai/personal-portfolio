@@ -41,10 +41,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
 
           {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[280px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto md:auto-rows-[280px]">
 
             {/* About Card - Large, spans 2 cols × 2 rows */}
-            <div className="bento-card md:col-span-2 md:row-span-2 bg-gradient-to-br from-primary via-primary/90 to-primary/70 rounded-3xl p-8 text-primary-foreground flex flex-col justify-between group overflow-hidden relative">
+            <div className="bento-card md:col-span-2 md:row-span-2 bg-gradient-to-br from-primary via-primary/90 to-primary/70 rounded-3xl p-8 text-primary-foreground flex flex-col justify-between group overflow-hidden relative min-h-[380px] md:min-h-0">
               {/* Ambient glow orb */}
               <div className="orb absolute -top-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
               <div className="orb absolute -bottom-16 -left-8 w-40 h-40 bg-white/5 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700 delay-100" />
@@ -63,8 +63,8 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="relative z-10 flex items-end justify-between">
-                <div className="flex gap-3">
+              <div className="relative z-10 flex items-end justify-between mt-6 md:mt-0">
+                <div className="flex flex-wrap gap-3">
                   <a
                     href="#contact"
                     className="px-4 py-2 bg-white text-primary rounded-xl text-xs font-semibold hover:bg-white/90 transition-all hover:shadow-lg hover:-translate-y-0.5"
@@ -82,7 +82,7 @@ export default function Home() {
             </div>
 
             {/* Experience Card */}
-            <div className="bento-card bg-card border border-border rounded-2xl p-6 hover:border-primary/40 hover:shadow-md transition-all duration-300 flex flex-col group">
+            <div className="bento-card bg-card border border-border rounded-2xl p-6 hover:border-primary/40 hover:shadow-md transition-all duration-300 flex flex-col group min-h-[200px] md:min-h-0">
               <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2 text-sm">
                 <span className="w-2 h-2 bg-primary rounded-full" />
                 Experience
@@ -218,7 +218,7 @@ export default function Home() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-3">
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input
                       type="text"
                       id="contact-name"
