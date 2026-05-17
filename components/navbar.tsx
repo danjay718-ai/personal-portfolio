@@ -16,7 +16,7 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 text-sm font-semibold text-foreground hover:text-primary transition-colors">
           <Image 
-            src="/danjay-icon.png" 
+            src="/danjay-icon-rounded.png" 
             alt="Dannver Jay" 
             width={28} 
             height={28} 

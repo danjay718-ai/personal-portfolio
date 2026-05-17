@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Dannver Jay Lagramada — Developer',
   description: 'Personal website and portfolio',
   icons: {
-    icon: '/danjay-icon.png',
+    icon: '/danjay-icon-rounded.png',
   },
 }
 
