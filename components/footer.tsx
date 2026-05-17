@@ -19,8 +19,15 @@ export function Footer() {
           <Link href="/projects" className="text-xs text-muted-foreground hover:text-primary transition-colors">
             Projects
           </Link>
-          <a href="/#contact" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+          <Link href="/#contact" className="text-xs text-muted-foreground hover:text-primary transition-colors">
             Contact
+          </Link>
+          <a
+            href="/Dannver_Lagramada_Resume.pdf"
+            download
+            className="text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            Resume
           </a>
           <a
             href="https://github.com/danjay718-ai"

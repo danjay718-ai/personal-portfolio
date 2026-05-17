@@ -82,14 +82,15 @@ export default function Home() {
                       </button>
                     )}
                   </p>
+                  { label: 'Phone', href: 'tel:+639766379761', icon: '+' },
                   
                   {isExpanded && (
                     <>
                       <p className="animate-fadeIn">
-                        I've worked end-to-end on real production systems — student enrollment, scholarship management, finance automation processing 2,000+ transactions per cycle, and currently architecting a centralized SSO and API Gateway. I take full ownership of everything I build, from development and testing to deployment and production support.
+                        I&apos;ve worked end-to-end on real production systems — student enrollment, scholarship management, finance automation processing 2,000+ transactions per cycle, and currently architecting a centralized SSO and API Gateway. I take full ownership of everything I build, from development and testing to deployment and production support.
                       </p>
                       <p className="animate-fadeIn">
-                        I love learning and I'm always open to exploring new technologies, roles, and challenges. I'm enthusiastically working to master advanced Laravel, and actively exploring cloud, system design, and AI — areas I'm genuinely excited to grow into.
+                        I love learning and I&apos;m always open to exploring new technologies, roles, and challenges. I&apos;m enthusiastically working to master advanced Laravel, and actively exploring cloud, system design, and AI — areas I&apos;m genuinely excited to grow into.
                       </p>
                       <p className="animate-fadeIn">
                         Currently open to full stack, backend, or web developer opportunities where I can contribute, grow, and build things that matter.
@@ -120,6 +121,13 @@ export default function Home() {
                     className="px-4 py-2 bg-white/15 text-primary-foreground rounded-xl text-xs font-semibold hover:bg-white/25 transition-all backdrop-blur-sm hover:-translate-y-0.5"
                   >
                     View GitHub
+                  </a>
+                  <a
+                    href="/Dannver_Lagramada_Resume.pdf"
+                    download
+                    className="px-4 py-2 bg-white/15 text-primary-foreground rounded-xl text-xs font-semibold hover:bg-white/25 transition-all backdrop-blur-sm hover:-translate-y-0.5"
+                  >
+                    Download resume
                   </a>
                 </div>
               </div>
@@ -337,3 +345,4 @@ export default function Home() {
     </main>
   );
 }
+

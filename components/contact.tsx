@@ -125,17 +125,25 @@ export function Contact() {
           )}
         </form>
 
-        <div className="pt-8 border-t border-border">
-          <p className="text-muted-foreground text-sm mb-4">Connect with me:</p>
-          <div className="flex gap-4">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-              GitHub
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-              LinkedIn
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-              Twitter
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between gap-8">
+          <div>
+            <p className="text-muted-foreground text-sm mb-4">Connect with me:</p>
+            <div className="flex gap-4">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                GitHub
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                LinkedIn
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                Twitter
+              </a>
+            </div>
+          </div>
+          <div>
+            <p className="text-muted-foreground text-sm mb-4">Direct Contact:</p>
+            <a href="tel:+639766379761" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+              +63 976 637 9761
             </a>
           </div>
         </div>

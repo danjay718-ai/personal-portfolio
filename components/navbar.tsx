@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { Download, Menu, X } from 'lucide-react';
 
 export function Navbar() {
   const pathname = usePathname();
@@ -27,7 +27,7 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
-          <Link
+          {/* <Link
             href="/projects"
             className={`text-sm transition-colors ${
               pathname === '/projects'
@@ -36,7 +36,7 @@ export function Navbar() {
             }`}
           >
             Projects
-          </Link>
+          </Link> */}
           <Link
             href="/blog"
             className={`text-sm transition-colors ${
@@ -56,6 +56,14 @@ export function Navbar() {
               Contact
             </Link>
           )}
+          <a
+            href="/Dannver_Lagramada_Resume.pdf"
+            download
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" />
+            Resume
+          </a>
           <a
             href="https://calendly.com/dannverjay-lagramada718/30min"
             target="_blank"
@@ -80,7 +88,7 @@ export function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden border-b border-border bg-background/95 backdrop-blur-md transition-all duration-200">
           <div className="px-6 py-4 flex flex-col gap-4">
-            <Link
+            {/* <Link
               href="/projects"
               onClick={() => setIsMenuOpen(false)}
               className={`text-sm font-medium py-1 transition-colors ${
@@ -88,7 +96,7 @@ export function Navbar() {
               }`}
             >
               Projects
-            </Link>
+            </Link> */}
             <Link
               href="/blog"
               onClick={() => setIsMenuOpen(false)}
@@ -115,6 +123,15 @@ export function Navbar() {
                 Contact
               </Link>
             )}
+            <a
+              href="/Dannver_Lagramada_Resume.pdf"
+              download
+              onClick={() => setIsMenuOpen(false)}
+              className="inline-flex items-center gap-2 text-sm font-medium py-1 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Download className="w-4 h-4" />
+              Resume
+            </a>
             <a
               href="https://calendly.com/dannverjay-lagramada718/30min"
               target="_blank"
