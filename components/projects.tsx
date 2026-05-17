@@ -7,7 +7,7 @@ export interface ProjectItem {
   tags: string[];
   year?: string;
   link?: string;
-  status?: 'In Progress' | 'Live' | 'Planned' | 'Side Project' | 'Coming Soon' | 'UAT';
+  status?: 'In Progress' | 'Live' | 'Planned' | 'Side Project' | 'Coming Soon' | 'UAT' | 'Prototype';
   note?: string;
 }
 
@@ -78,6 +78,16 @@ export const projectsData: ProjectItem[] = [
       year: '2025',
     },
     {
+      id: 10,
+      title: 'Kmertz Travel & Tours Website',
+      description: 'Landing page built for a prospective client offering travel, tours, and itinerary promos. Developed as a prototype and deployed on Vercel.',
+      link: 'https://kmertz-website.vercel.app/',
+      tags: ['React', 'JavaScript', 'Vercel'],
+      status: 'Prototype',
+      note: 'Client did not proceed.',
+      year: '2026',
+    },
+    {
       id: 9,
       title: 'Blog App',
       description: 'A personal blog application currently in the planning stage.',
@@ -102,6 +112,8 @@ export function Projects() {
         return 'bg-blue-500/10 text-blue-500 border border-blue-500/25';
       case 'Side Project':
         return 'bg-purple-500/10 text-purple-500 border border-purple-500/25';
+      case 'Prototype':
+        return 'bg-slate-500/10 text-slate-500 border border-slate-500/25';
       default:
         return 'bg-primary/10 text-primary border border-primary/15';
     }

@@ -36,6 +36,8 @@ export default function ProjectsPage() {
         return 'bg-blue-500/10 text-blue-500 border border-blue-500/25';
       case 'Side Project':
         return 'bg-purple-500/10 text-purple-500 border border-purple-500/25';
+      case 'Prototype':
+        return 'bg-slate-500/10 text-slate-500 border border-slate-500/25';
       default:
         return '';
     }
@@ -82,10 +84,10 @@ export default function ProjectsPage() {
           {/* Project grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((project, i) => {
-              const CardWrapper = project.href ? 'a' : 'div';
-              const extraProps = project.href
+              const CardWrapper = project.link ? 'a' : 'div';
+              const extraProps = project.link
                 ? {
-                    href: project.href,
+                    href: project.link,
                     target: '_blank',
                     rel: 'noopener noreferrer',
                     className: 'bento-card group flex flex-col p-6 bg-card border border-border rounded-2xl hover:border-primary/40 hover:shadow-md transition-all duration-300 cursor-pointer',
@@ -106,7 +108,7 @@ export default function ProjectsPage() {
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider ${getStatusStyle(project.status)}`}>
                         {project.status}
                       </span>
-                    ) : project.href ? (
+                    ) : project.link ? (
                       <span className="text-primary opacity-0 group-hover:opacity-100 transition-opacity text-xs">
                         View Live →
                       </span>
