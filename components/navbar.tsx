@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 export function Navbar() {
@@ -13,8 +14,15 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
-          Dannver Jay Lagramada
+        <Link href="/" className="flex items-center gap-2.5 text-sm font-semibold text-foreground hover:text-primary transition-colors">
+          <Image 
+            src="/danjay-icon.png" 
+            alt="Dannver Jay" 
+            width={28} 
+            height={28} 
+            className="rounded-md object-cover"
+          />
+          <span>Dannver Jay Lagramada</span>
         </Link>
 
         {/* Desktop Navigation */}
